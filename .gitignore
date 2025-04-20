@@ -1,0 +1,9 @@
+db.env
+service.env
+flyway.conf
+target/
+.vscode
+application.yaml
+email.properties
+sms.properties
+telegram.properties
