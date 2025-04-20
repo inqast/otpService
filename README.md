@@ -7,7 +7,7 @@
 - Make
 
 ## Начало работы
-- создать файлы конфигурации (db.env, application.yaml, email/sms/telegram.propertie) файлы из example файлов в директориях
+- создать файлы конфигурации (db.env, application.yaml, email/sms/telegram.properties) из example файлов
 - make build
 - make up
 - make migrate
@@ -17,6 +17,7 @@
 
 ### Создание пользователя
 POST /auth/register
+
 body:
  - username string
  - password string
@@ -35,6 +36,7 @@ curl --location 'localhost:8080/auth/register' \
 
 ### Получение токена для пользователя
 POST /auth/login
+
 body:
  - username string
  - password string
@@ -53,8 +55,10 @@ curl --location 'localhost:8080/auth/login' \
 
 ### Создание кода
 POST /otp/generate
+
 headers:
 - Authorization string токен пользователя
+
 body:
  - operationId string
  - channel string sms/telegram/file/email
@@ -74,8 +78,10 @@ curl --location 'localhost:8080/otp/generate' \
 
 ### Проверка кода
 POST /otp/validate
+
 headers:
 - Authorization string токен пользователя
+
 body:
  - operationId string
  - code string
@@ -95,6 +101,7 @@ curl --location 'localhost:8080/otp/validate' \
 
 ## Получение конфига
 GET /admin/config
+
 headers:
 - Authorization string токен пользователя
 
@@ -106,8 +113,10 @@ curl --location 'localhost:8080/admin/config' \
 
 ## Обновление конфига
 PUT /admin/config
+
 headers:
 - Authorization string токен пользователя
+
 body:
  - codeLength int
  - ttlSeconds int
@@ -125,6 +134,7 @@ curl --location --request PUT 'localhost:8080/admin/config' \
 
 ## Получение списка пользователей
 GET /admin/config
+
 headers:
 - Authorization string токен пользователя
 
@@ -136,8 +146,10 @@ curl --location 'localhost:8080/admin/users' \
 
 ## Удаление пользователя
 GET /admin/config
+
 path-params:
 - user_id int
+
 headers:
 - Authorization string токен пользователя
 
